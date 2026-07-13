@@ -1,0 +1,16 @@
+# Pilates Arte
+
+Pilates Arte Health Studio için tek sayfalık tanıtım web sitesi.
+
+## Dosyalar
+
+- `index.html` — Ana sayfa
+- `styles.css` — Stil dosyası
+- `app.jsx` — React bileşenleri
+- `booking.js` — Rezervasyon mantığı
+- `interactions.js` — Sayfa etkileşimleri (özel imleç, reveal animasyonları vb.)
+- `image-slot.js` — Sürükle-bırak görsel bileşeni
+
+## Kullanım
+
+`index.html` dosyasını bir tarayıcıda açmanız yeterli. Ekstra derleme adımı gerekmez.
