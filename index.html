@@ -1600,7 +1600,13 @@ html.js [data-reveal].in{opacity:1;transform:none;}
   form.addEventListener("submit", function(ev){
     ev.preventDefault();
     if(!form.reportValidity()) return;
-    summary.innerHTML = '<span class="booking__ok">✓ Mesajınız alındı —</span> en kısa sürede seni arayacağız.';
+    var name = $("bkName").value.trim();
+    var phone = $("bkPhone").value.trim();
+    var message = msgField.value.trim();
+    var text = "Ad Soyad: " + name + "\nTelefon: " + phone + "\nTarih: " + fmtDate(state.selDate) + "\nMesaj: " + message;
+    var waUrl = "https://wa.me/905546776851?text=" + encodeURIComponent(text);
+    window.open(waUrl, "_blank");
+    summary.innerHTML = '<span class="booking__ok">✓ WhatsApp\'a yönlendirildin —</span> en kısa sürede seni arayacağız.';
     form.reset();
     form.style.display = "none";
   });
