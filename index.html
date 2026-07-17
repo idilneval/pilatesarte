@@ -364,6 +364,7 @@ p{margin:0;}
 .booking__summary{margin:20px 0 0;font-size:.95rem;color:var(--ink-soft);line-height:1.6;min-height:1.3em;}
 .booking__summary b{color:var(--ink);font-weight:500;}
 .booking__ok{color:var(--accent);font-weight:500;}
+.booking__err{color:#b5432f;font-weight:500;}
 .booking__confirm{width:100%;justify-content:center;}
 .booking__confirm:disabled{opacity:.4;cursor:not-allowed;}
 
@@ -815,7 +816,7 @@ html.js [data-reveal].in{opacity:1;transform:none;}
         <div data-reveal>
           <span class="kicker">SSS</span>
           <h2 class="section-title">Aklındaki <span class="serif">sorular</span></h2>
-          <p class="lead" style="margin-top:18px">Başka bir şey mi var? <a href="#" style="color:var(--accent);font-weight:500">Bize yaz →</a></p>
+          <p class="lead" style="margin-top:18px">Başka bir şey mi var? <a href="https://wa.me/905546776851" target="_blank" rel="noopener" style="color:var(--accent);font-weight:500">Bize yaz →</a></p>
         </div>
         <div class="faq-list" data-reveal>
           <details class="faq" open>
@@ -1603,12 +1604,34 @@ html.js [data-reveal].in{opacity:1;transform:none;}
     var name = $("bkName").value.trim();
     var phone = $("bkPhone").value.trim();
     var message = msgField.value.trim();
-    var text = "Ad Soyad: " + name + "\nTelefon: " + phone + "\nTarih: " + fmtDate(state.selDate) + "\nMesaj: " + message;
-    var waUrl = "https://wa.me/905546776851?text=" + encodeURIComponent(text);
-    window.open(waUrl, "_blank");
-    summary.innerHTML = '<span class="booking__ok">✓ WhatsApp\'a yönlendirildin —</span> en kısa sürede seni arayacağız.';
-    form.reset();
-    form.style.display = "none";
+    var dateStr = fmtDate(state.selDate);
+    var confirmBtn = $("bkConfirm");
+    var btnHTML = confirmBtn.innerHTML;
+    confirmBtn.disabled = true;
+    confirmBtn.textContent = "Gönderiliyor...";
+
+    var fd = new FormData();
+    fd.append("Ad Soyad", name);
+    fd.append("Telefon", phone);
+    fd.append("Tarih", dateStr);
+    fd.append("Mesaj", message);
+    fd.append("_subject", "Yeni rezervasyon talebi — " + dateStr);
+
+    fetch("https://formsubmit.co/ajax/ahmet.kirimli@gmail.com", {
+      method: "POST",
+      headers: { "Accept": "application/json" },
+      body: fd
+    }).then(function(res){
+      if(!res.ok) throw new Error("request failed");
+      summary.innerHTML = '<span class="booking__ok">✓ Mesajınız gönderildi —</span> en kısa sürede seni arayacağız.';
+      form.reset();
+      form.style.display = "none";
+    }).catch(function(){
+      summary.innerHTML = '<span class="booking__err">✗ Gönderilemedi —</span> lütfen tekrar dene ya da bizi ara.';
+    }).finally(function(){
+      confirmBtn.disabled = false;
+      confirmBtn.innerHTML = btnHTML;
+    });
   });
 
   renderCalendar();
