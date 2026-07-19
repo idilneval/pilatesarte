@@ -177,13 +177,13 @@
         <div class="instructor__text">
           <div class="instructor__role">Kişisel Eğitmeniniz</div>
           <div class="instructor__name">Ahmet Kırımlı</div>
-          <p class="lead instructor__lead">Jimnastik, dans ve yüzme geçmişiyle hareketin anatomisine hâkim. Her bedene özel, güvenli ve dönüştürücü bir pilates deneyimi sunar.</p>
+          <p class="lead instructor__lead">Cimnastik, dans ve yüzme geçmişiyle hareketin anatomisine hâkim. Her bedene özel, güvenli ve dönüştürücü bir pilates deneyimi sunar.</p>
           <ul class="instructor__creds">
             <li>Marmara Ü. Spor Akademisi</li>
             <li>Nişantaşı Ü. Fizyoterapi</li>
             <li>BBU-TCF Sertifikalı</li>
             <li>Hareket Uzmanı</li>
-            <li>Jimnastik · Dans · Yüzme</li>
+            <li>Cimnastik · Dans · Yüzme</li>
           </ul>
         </div>
       </div>

@@ -691,13 +691,13 @@ html.js [data-reveal].in{opacity:1;transform:none;}
           <div class="instructor__text">
             <div class="instructor__role">Eğitmen</div>
             <div class="instructor__name">Ahmet Kırımlı</div>
-            <p class="lead instructor__lead">Jimnastik, yüzme ve dans geçmişiyle hareketin anatomisine hâkim. Her bedene özel, güvenli ve dönüştürücü bir pilates deneyimi sunar.</p>
+            <p class="lead instructor__lead">Cimnastik, yüzme ve dans geçmişiyle hareketin anatomisine hâkim. Her bedene özel, güvenli ve dönüştürücü bir pilates deneyimi sunar.</p>
             <ul class="instructor__creds">
               <li>Marmara Ü. Spor Akademisi</li>
               <li>Balance Body University</li>
               <li>TCF 2. Kademe Sertifikalı</li>
               <li>Hareket Uzmanı</li>
-              <li>Jimnastik · Yüzme · Dans</li>
+              <li>Cimnastik · Yüzme · Dans</li>
             </ul>
           </div>
         </article>
