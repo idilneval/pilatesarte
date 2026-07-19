@@ -403,7 +403,7 @@
         <h4>İletişim</h4>
         <a href="tel:+905546776851">+90 554 677 68 51</a>
         <a href="mailto:info@artestudio.com">info@artestudio.com</a>
-        <p>Rumeli Hisarı, Bağdat Caddesi<br>Sarıyer / İstanbul</p>
+        <p>Nispetiye Mah., Günaydın Yolu Sok. No:2<br>Beşiktaş / İstanbul</p>
         <div class="footer__social">
           <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"></circle></svg></a>
           <a href="https://wa.me/905546776851" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-12.3 7.5L3 21l1.9-5.7A8.4 8.4 0 1 1 21 11.5z"></path></svg></a>
