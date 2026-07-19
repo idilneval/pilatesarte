@@ -899,7 +899,6 @@ html.js [data-reveal].in{opacity:1;transform:none;}
       <div class="footer__col">
         <h4>İletişim</h4>
         <a href="tel:+905546776851">+90 554 677 68 51</a>
-        <a href="mailto:info@artestudio.com">info@artestudio.com</a>
         <p>Rumeli Hisarı Mah. Bebek Yolu Sok.<br>Sarıyer / İstanbul</p>
         <div class="footer__social">
           <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"></circle></svg></a>
