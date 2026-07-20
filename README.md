@@ -411,7 +411,7 @@
       </div>
     </div>
     <div class="footer__bottom">
-      <span>© 2026 Arte Pilates Health Studio. Tüm hakları saklıdır.</span>
+      <span>© 2026 Pilates Arte Health Studio. Tüm hakları saklıdır.</span>
     </div>
   </div>
 </footer>
