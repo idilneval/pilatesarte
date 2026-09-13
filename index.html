@@ -119,8 +119,11 @@ p{margin:0;}
 .nav{position:fixed;top:0;left:0;right:0;z-index:50;transition:background .4s, border-color .4s;border-bottom:1px solid transparent;}
 .nav__inner{max-width:1440px;margin-inline:auto;padding:26px clamp(20px,4vw,52px);
   display:flex;align-items:center;justify-content:space-between;gap:20px;}
-.nav.is-fixed{position:fixed;background:color-mix(in oklab,var(--cream) 92%, transparent);
-  backdrop-filter:blur(14px) saturate(1.05);border-bottom:1px solid var(--line);}
+.nav.is-fixed{position:fixed;background:var(--cream);border-bottom:1px solid var(--line);}
+@media (min-width:769px){
+  .nav.is-fixed{background:color-mix(in oklab,var(--cream) 92%, transparent);
+    backdrop-filter:blur(14px) saturate(1.05);}
+}
 .nav.is-fixed .brand,.nav.is-fixed .nav__links a{color:var(--ink);}
 .nav.is-fixed .nav__inner{padding-block:16px;}
 .brand{font-family:var(--font-display);line-height:1;color:#fff;transition:color .4s;white-space:nowrap;}
@@ -234,8 +237,9 @@ p{margin:0;}
 .instructors{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,4vw,56px);}
 .instructor__media{position:relative;aspect-ratio:4/5;border-radius:var(--radius);overflow:hidden;}
 .instructor__media image-slot{position:absolute;inset:0;z-index:1;width:100%;height:100%;border-radius:var(--radius);
-  filter:saturate(.96) brightness(.98);transition:transform .9s var(--ease), filter .6s var(--ease);will-change:transform;}
+  filter:saturate(.96) brightness(.98);transition:transform .9s var(--ease), filter .6s var(--ease);}
 .instructor__media:hover image-slot{filter:saturate(1.04) brightness(1.02);}
+@media (hover:hover){.instructor__media image-slot{will-change:transform;}}
 .instructor__scrim{position:absolute;inset:0 0 auto 0;height:50%;z-index:2;pointer-events:none;
   border-radius:var(--radius) var(--radius) 0 0;
   background:linear-gradient(180deg, rgba(14,19,13,.55) 0%, transparent 100%);}
@@ -257,8 +261,9 @@ p{margin:0;}
 .studio{position:relative;border-radius:var(--radius);overflow:hidden;display:flex;align-items:center;
   min-height:clamp(440px,52vw,660px);}
 .studio image-slot{position:absolute;inset:0;width:100%;height:100%;border-radius:0;
-  filter:saturate(.96) brightness(.98);transition:transform 1.2s var(--ease);will-change:transform;}
+  filter:saturate(.96) brightness(.98);transition:transform 1.2s var(--ease);}
 .studio:hover image-slot{transform:scale(1.045);}
+@media (hover:hover){.studio image-slot{will-change:transform;}}
 .studio__scrim{position:absolute;inset:0;z-index:1;pointer-events:none;
   background:linear-gradient(90deg, var(--cream) 3%, color-mix(in oklab,var(--cream) 90%, transparent) 30%, color-mix(in oklab,var(--cream) 32%, transparent) 52%, transparent 72%);}
 .studio__text{position:relative;z-index:2;max-width:44ch;padding:clamp(30px,4vw,72px);}
@@ -673,7 +678,7 @@ html.js [data-reveal].in{opacity:1;transform:none;}
       <div class="instructors">
         <article class="instructor" data-reveal>
           <div class="instructor__media">
-            <image-slot id="t-1" src="uploads/ahmet.png" placeholder="Eğitmen fotoğrafı"></image-slot>
+            <image-slot id="t-1" src="uploads/ahmet.webp" placeholder="Eğitmen fotoğrafı"></image-slot>
             <div class="instructor__scrim"></div>
             <span class="instructor__tag">Hareket Uzmanı</span>
           </div>
@@ -692,7 +697,7 @@ html.js [data-reveal].in{opacity:1;transform:none;}
         </article>
         <article class="instructor" data-reveal>
           <div class="instructor__media">
-            <image-slot id="t-2" src="uploads/ahmet2.png" placeholder="Eğitmen fotoğrafı"></image-slot>
+            <image-slot id="t-2" src="uploads/ahmet2.webp" placeholder="Eğitmen fotoğrafı"></image-slot>
             <div class="instructor__scrim"></div>
             <span class="instructor__tag">Hareket Uzmanı</span>
           </div>
@@ -1125,7 +1130,7 @@ html.js [data-reveal].in{opacity:1;transform:none;}
       root.innerHTML =
         '<style>' + stylesheet + '</style>' +
         '<div class="frame" part="frame">' +
-        '  <img part="image" alt="" draggable="false" style="display:none">' +
+        '  <img part="image" alt="" draggable="false" style="display:none" loading="lazy" decoding="async">' +
         '  <div class="empty" part="empty">' + icon +
         '    <div class="cap"></div>' +
         '    <div class="sub">or <u>browse files</u></div></div>' +
@@ -1692,6 +1697,16 @@ html.js [data-reveal].in{opacity:1;transform:none;}
   window.addEventListener('load', revealCheck);
   setTimeout(revealCheck, 250);
   setTimeout(revealAll, 1600);
+
+  // drop will-change once the reveal transition finishes — keeping it forever
+  // pins every [data-reveal] element to its own compositor layer, which adds
+  // up on mobile GPUs and contributes to scroll jank.
+  document.addEventListener('transitionend', function(e){
+    var el = e.target;
+    if(el && el.hasAttribute && el.hasAttribute('data-reveal') && el.classList.contains('in')){
+      el.style.willChange = 'auto';
+    }
+  });
 })();
 </script>
 <script>
